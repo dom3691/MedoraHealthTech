@@ -1,0 +1,72 @@
+@if (viewModel$ | async; as vm) {
+  <div class="app-frame">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <span class="brand-mark"><app-icon name="stethoscope" /></span>
+        <div>
+          <strong>{{ vm.application.productName }}</strong>
+          <small>{{ vm.application.productSuite }}</small>
+        </div>
+      </div>
+
+      @if (vm.session?.tenant; as tenant) {
+        <div class="tenant-card">
+          <span>{{ initials(tenant.name) }}</span>
+          <div>
+            <strong>{{ tenant.name }}</strong>
+            <small>Tenant {{ tenant.code }} - {{ tenant.plan }}</small>
+          </div>
+        </div>
+      }
+
+      <nav class="nav-scroll">
+        @for (group of vm.catalog.navigation; track group.name) {
+          <section class="nav-group">
+            <h2>{{ group.name }}</h2>
+            @for (item of group.items; track item.key) {
+              <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <span class="nav-icon"><app-icon [name]="item.icon" /></span>
+                <span>{{ item.label }}</span>
+              </a>
+            }
+          </section>
+        }
+      </nav>
+
+      <div class="sidebar-footer">
+        <button type="button" (click)="signOut()"><span class="nav-icon"><app-icon name="log-out" /></span><span>Sign out</span></button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <h1>{{ vm.currentScreen.title }}</h1>
+          @if (vm.session?.tenant; as tenant) {
+            <p>{{ tenant.name }} - {{ tenant.location }}</p>
+          } @else {
+            <p>{{ vm.currentScreen.subtitle }}</p>
+          }
+        </div>
+        <div class="topbar-actions">
+          <label class="search-box">
+            <span><app-icon name="search" /></span>
+            <input [placeholder]="vm.application.globalSearchPlaceholder" />
+          </label>
+          <button class="icon-button" aria-label="Notifications"><app-icon name="bell" /></button>
+          @if (vm.session?.user; as user) {
+            <div class="user-card">
+              <span>{{ initials(user.fullName) }}</span>
+              <div>
+                <strong>{{ user.fullName }}</strong>
+                <small>{{ user.roleNames[0] || 'User' }}</small>
+              </div>
+            </div>
+          }
+        </div>
+      </header>
+
+      <router-outlet />
+    </main>
+  </div>
+}

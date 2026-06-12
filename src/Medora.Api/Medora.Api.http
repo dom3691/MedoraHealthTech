@@ -1,0 +1,14 @@
+﻿@Medora.Api_HostAddress = https://localhost:7108
+
+GET {{Medora.Api_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{Medora.Api_HostAddress}}/api/setup/catalog
+Accept: application/json
+
+###
+
+POST {{Medora.Api_HostAddress}}/api/setup/seed
+Accept: application/json

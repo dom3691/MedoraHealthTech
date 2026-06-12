@@ -1,0 +1,57 @@
+﻿<main class="login-page">
+  <section class="hero-panel">
+    @if (application(); as app) {
+      <div class="brand">
+        <span>{{ app.productName.charAt(0) }}</span>
+        <div>
+          <strong>{{ app.productName }}</strong>
+          <small>{{ app.productSuite }}</small>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <h1>{{ app.loginHeroTitle }}</h1>
+        <p>{{ app.loginHeroSubtitle }}</p>
+        <span class="compliance-chip">{{ app.loginComplianceText }}</span>
+      </div>
+    }
+  </section>
+
+  <section class="signin-panel" aria-label="Sign in">
+    <article class="signin-card">
+      <h2>Sign in</h2>
+      <p>Enter your credentials to access your hospital workspace.</p>
+
+      @if (errorMessage()) {
+        <div class="form-alert">{{ errorMessage() }}</div>
+      }
+
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" [(ngModel)]="email" autocomplete="username" placeholder="name@hospital.org" />
+      </label>
+
+      <label>
+        <span>Password <a>Forgot?</a></span>
+        <input type="password" name="password" [(ngModel)]="password" autocomplete="current-password" placeholder="Enter password" />
+      </label>
+
+      <div class="hospital-select">
+        <h3>Select your hospital</h3>
+        @if (isLoading()) {
+          <div class="loading-row">Loading tenants...</div>
+        } @else {
+          @for (tenant of tenants(); track tenant.code) {
+            <button type="button" [class.selected]="tenant.code === selectedTenantCode()" (click)="selectTenant(tenant)">
+              <span class="radio"></span>
+              <strong>{{ tenant.name }}</strong>
+              <small>{{ tenant.location }} - {{ tenant.licensedBeds }} beds - {{ tenant.code }} - {{ tenant.plan }}</small>
+            </button>
+          }
+        }
+      </div>
+
+      <button class="signin-button" type="button" (click)="signIn()">Sign in</button>
+    </article>
+  </section>
+</main>
