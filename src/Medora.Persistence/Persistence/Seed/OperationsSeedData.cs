@@ -4,7 +4,7 @@ using Medora.Domain.HrOperations;
 
 namespace Medora.Infrastructure.Persistence.Seed;
 
-internal static class OperationsSeedData
+public static class OperationsSeedData
 {
     private static readonly DateTimeOffset Today = new(2026, 6, 11, 8, 0, 0, TimeSpan.Zero);
 

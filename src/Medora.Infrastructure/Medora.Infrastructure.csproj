@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Medora.Domain\Medora.Domain.csproj" />
     <ProjectReference Include="..\Medora.Application\Medora.Application.csproj" />
+    <ProjectReference Include="..\Medora.Persistence\Medora.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

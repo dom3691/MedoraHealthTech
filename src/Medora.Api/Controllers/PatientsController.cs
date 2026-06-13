@@ -1,4 +1,5 @@
 using Medora.Application.Common.Models;
+using Medora.Application.Features.Patients.Commands.CreatePatient;
 using Medora.Application.Features.Patients.DTOs;
 using Medora.Application.Features.Patients.Queries.GetPatients;
 using Medora.Application.Modules.Operations.Data;
@@ -10,6 +11,7 @@ namespace Medora.Api.Controllers;
 [Route("api/patients")]
 public sealed class PatientsController(
     IGetPatientsQueryHandler getPatientsQueryHandler,
+    ICreatePatientCommandHandler createPatientCommandHandler,
     IOperationsDataQueryService operationsData) : ControllerBase
 {
     [HttpGet]
@@ -28,5 +30,14 @@ public sealed class PatientsController(
     {
         var patients = await operationsData.GetPatientsAsync(tenantCode, cancellationToken);
         return Ok(patients);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<ApiResponse<CommandResult>>> CreatePatient(
+        [FromBody] CreatePatientCommand command,
+        CancellationToken cancellationToken)
+    {
+        var result = await createPatientCommandHandler.Handle(command, cancellationToken);
+        return Created($"/api/patients/{result.Id}", ApiResponse<CommandResult>.Ok(result, "Patient created successfully."));
     }
 }

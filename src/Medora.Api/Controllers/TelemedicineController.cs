@@ -1,12 +1,15 @@
 using Medora.Application.Modules.Operations.Data;
 using Medora.Application.Common.Models;
+using Medora.Application.Features.Telemedicine.Commands.ScheduleTelemedicineSession;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
 
 [ApiController]
 [Route("api/telemedicine")]
-public sealed class TelemedicineController(IOperationsDataQueryService operationsData) : ControllerBase
+public sealed class TelemedicineController(
+    IOperationsDataQueryService operationsData,
+    IScheduleTelemedicineSessionCommandHandler scheduleTelemedicineSessionCommandHandler) : ControllerBase
 {
     [HttpGet("sessions")]
     [HttpGet("/api/operations/telemedicine-sessions")]
@@ -14,5 +17,14 @@ public sealed class TelemedicineController(IOperationsDataQueryService operation
     {
         var sessions = await operationsData.GetTelemedicineSessionsAsync(tenantCode, cancellationToken);
         return Ok(ApiResponse<object>.Ok(sessions));
+    }
+
+    [HttpPost("sessions")]
+    public async Task<ActionResult<ApiResponse<CommandResult>>> ScheduleSession(
+        [FromBody] ScheduleTelemedicineSessionCommand command,
+        CancellationToken cancellationToken)
+    {
+        var result = await scheduleTelemedicineSessionCommandHandler.Handle(command, cancellationToken);
+        return Created($"/api/telemedicine/sessions/{result.Id}", ApiResponse<CommandResult>.Ok(result, "Telemedicine session scheduled successfully."));
     }
 }
