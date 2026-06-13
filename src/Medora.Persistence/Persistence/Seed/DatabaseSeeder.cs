@@ -1,5 +1,5 @@
-using Medora.Application.Security;
-using Medora.Domain.Identity;
+﻿using Medora.Application.Security;
+using Medora.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Medora.Infrastructure.Persistence.Seed;
@@ -253,3 +253,4 @@ public sealed class DatabaseSeeder
         _ => $"admin@{tenantCode.ToLowerInvariant().Replace("-", "")}.medora.local"
     };
 }
+

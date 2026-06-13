@@ -1,7 +1,7 @@
-using Medora.Application.Common.Models;
+﻿using Medora.Application.Common.Models;
 using Medora.Application.Features.RadiologyImaging.Commands.CreateRadiologyStudy;
 using Medora.Application.Features.RadiologyImaging.Commands.UpdateRadiologyStudyStatus;
-using Medora.Application.Modules.Operations.Data;
+using Medora.Application.Features.RadiologyImaging.Queries.GetRadiologyStudies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
@@ -9,14 +9,14 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/radiology-imaging")]
 public sealed class RadiologyImagingController(
-    IOperationsDataQueryService operationsData,
+    IGetRadiologyStudiesQueryHandler getRadiologyStudiesQueryHandler,
     ICreateRadiologyStudyCommandHandler createRadiologyStudyCommandHandler,
     IUpdateRadiologyStudyStatusCommandHandler updateRadiologyStudyStatusCommandHandler) : ControllerBase
 {
     [HttpGet("studies")]
     public async Task<ActionResult<ApiResponse<object>>> GetStudies([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var studies = await operationsData.GetDiagnosticOrdersAsync(tenantCode, "Radiology", cancellationToken);
+        var studies = await getRadiologyStudiesQueryHandler.Handle(new GetRadiologyStudiesQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(studies));
     }
 
@@ -41,3 +41,6 @@ public sealed class RadiologyImagingController(
 }
 
 public sealed record UpdateRadiologyStudyStatusRequest(string Status, string? Finding);
+
+
+

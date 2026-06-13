@@ -1,4 +1,4 @@
-using Medora.Application.Modules.Operations.Data;
+﻿using Medora.Application.Features.PatientFlow.Queries.GetPatientEncounters;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.PatientFlow.Commands.MovePatientFlowStage;
 using Medora.Application.Features.PatientFlow.Commands.RegisterWalkIn;
@@ -9,7 +9,7 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/patient-flow")]
 public sealed class PatientFlowController(
-    IOperationsDataQueryService operationsData,
+    IGetPatientEncountersQueryHandler getPatientEncountersQueryHandler,
     IRegisterWalkInCommandHandler registerWalkInCommandHandler,
     IMovePatientFlowStageCommandHandler movePatientFlowStageCommandHandler) : ControllerBase
 {
@@ -18,7 +18,7 @@ public sealed class PatientFlowController(
     [HttpGet("/api/operations/encounters")]
     public async Task<ActionResult<ApiResponse<object>>> GetEncounters([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var encounters = await operationsData.GetEncountersAsync(tenantCode, cancellationToken);
+        var encounters = await getPatientEncountersQueryHandler.Handle(new GetPatientEncountersQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(encounters));
     }
 
@@ -44,3 +44,6 @@ public sealed class PatientFlowController(
 }
 
 public sealed record MovePatientFlowStageRequest(string Stage, string Status);
+
+
+

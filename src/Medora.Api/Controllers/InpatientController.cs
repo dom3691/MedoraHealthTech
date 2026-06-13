@@ -1,7 +1,7 @@
-using Medora.Application.Common.Models;
+﻿using Medora.Application.Common.Models;
 using Medora.Application.Features.Inpatient.Commands.AdmitPatient;
 using Medora.Application.Features.Inpatient.Commands.DischargePatient;
-using Medora.Application.Modules.Operations.Data;
+using Medora.Application.Features.Inpatient.Queries.GetAdmissions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
@@ -9,7 +9,7 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/inpatient")]
 public sealed class InpatientController(
-    IOperationsDataQueryService operationsData,
+    IGetAdmissionsQueryHandler getAdmissionsQueryHandler,
     IAdmitPatientCommandHandler admitPatientCommandHandler,
     IDischargePatientCommandHandler dischargePatientCommandHandler) : ControllerBase
 {
@@ -17,7 +17,7 @@ public sealed class InpatientController(
     [HttpGet("/api/operations/admissions")]
     public async Task<ActionResult<ApiResponse<object>>> GetAdmissions([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var admissions = await operationsData.GetAdmissionsAsync(tenantCode, cancellationToken);
+        var admissions = await getAdmissionsQueryHandler.Handle(new GetAdmissionsQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(admissions));
     }
 
@@ -40,3 +40,6 @@ public sealed class InpatientController(
         return Ok(ApiResponse<CommandResult>.Ok(result, "Patient discharged successfully."));
     }
 }
+
+
+

@@ -1,8 +1,7 @@
-using Medora.Application.Common.Interfaces;
+﻿using Medora.Application.Common.Interfaces;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.Patients.Queries.GetPatients;
-using Medora.Domain.HospitalOperations;
-using Medora.Domain.Identity;
+using Medora.Domain.Entities;
 using Medora.Infrastructure.Features.Patients;
 using Medora.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -50,3 +49,4 @@ public sealed class PatientsQueryHandlerTests
         public string? TenantCode { get; } = tenantCode;
     }
 }
+

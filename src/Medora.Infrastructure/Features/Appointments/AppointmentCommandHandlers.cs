@@ -1,9 +1,9 @@
-using Medora.Application.Common.Exceptions;
+﻿using Medora.Application.Common.Exceptions;
 using Medora.Application.Common.Interfaces;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.Appointments.Commands.CreateAppointment;
 using Medora.Application.Features.Appointments.Commands.UpdateAppointmentStatus;
-using Medora.Domain.HospitalOperations;
+using Medora.Domain.Entities;
 using Medora.Infrastructure.Features.Common;
 using Medora.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +18,9 @@ public sealed class CreateAppointmentCommandHandler(MedoraDbContext dbContext, I
         Require(!string.IsNullOrWhiteSpace(command.AppointmentNumber), "Appointment number is required.");
         Require(!string.IsNullOrWhiteSpace(command.PatientMrn), "Patient MRN is required.");
         Require(!string.IsNullOrWhiteSpace(command.PatientName), "Patient name is required.");
+        RequireText(command.ProviderName, "Provider name");
+        RequireText(command.Department, "Department");
+        RequireText(command.VisitType, "Visit type");
 
         var tenantId = await GetTenantIdAsync(cancellationToken);
         var appointment = new Appointment
@@ -46,6 +49,8 @@ public sealed class UpdateAppointmentStatusCommandHandler(MedoraDbContext dbCont
 {
     public async Task<CommandResult> Handle(UpdateAppointmentStatusCommand command, CancellationToken cancellationToken = default)
     {
+        RequireText(command.Status, "Appointment status");
+
         var tenantId = await GetTenantIdAsync(cancellationToken);
         var appointment = await DbContext.Appointments.FirstOrDefaultAsync(x => x.Id == command.AppointmentId && x.TenantId == tenantId, cancellationToken)
             ?? throw new ValidationException("Appointment was not found.");
@@ -57,3 +62,4 @@ public sealed class UpdateAppointmentStatusCommandHandler(MedoraDbContext dbCont
         return Result(appointment, appointment.AppointmentNumber, appointment.Status);
     }
 }
+

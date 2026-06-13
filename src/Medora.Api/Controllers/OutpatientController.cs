@@ -1,6 +1,6 @@
-using Medora.Application.Common.Models;
+﻿using Medora.Application.Common.Models;
 using Medora.Application.Features.Outpatient.Commands.BookOutpatientVisit;
-using Medora.Application.Modules.Operations.Data;
+using Medora.Application.Features.Outpatient.Queries.GetOutpatientVisits;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
@@ -8,7 +8,7 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/outpatient")]
 public sealed class OutpatientController(
-    IOperationsDataQueryService operationsData,
+    IGetOutpatientVisitsQueryHandler getOutpatientVisitsQueryHandler,
     IBookOutpatientVisitCommandHandler bookOutpatientVisitCommandHandler) : ControllerBase
 {
     [HttpGet("visits")]
@@ -17,7 +17,7 @@ public sealed class OutpatientController(
         [FromQuery] string? tenantCode,
         CancellationToken cancellationToken)
     {
-        var visits = await operationsData.GetEncountersAsync(tenantCode, cancellationToken);
+        var visits = await getOutpatientVisitsQueryHandler.Handle(new GetOutpatientVisitsQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(visits));
     }
 
@@ -30,3 +30,6 @@ public sealed class OutpatientController(
         return Created($"/api/outpatient/visits/{result.Id}", ApiResponse<CommandResult>.Ok(result, "Outpatient visit booked successfully."));
     }
 }
+
+
+

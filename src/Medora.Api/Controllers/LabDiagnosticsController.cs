@@ -1,7 +1,7 @@
-using Medora.Application.Common.Models;
+﻿using Medora.Application.Common.Models;
 using Medora.Application.Features.LabDiagnostics.Commands.CreateLabOrder;
 using Medora.Application.Features.LabDiagnostics.Commands.UpdateLabOrderStatus;
-using Medora.Application.Modules.Operations.Data;
+using Medora.Application.Features.LabDiagnostics.Queries.GetLabOrders;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
@@ -9,7 +9,7 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/lab-diagnostics")]
 public sealed class LabDiagnosticsController(
-    IOperationsDataQueryService operationsData,
+    IGetLabOrdersQueryHandler getLabOrdersQueryHandler,
     ICreateLabOrderCommandHandler createLabOrderCommandHandler,
     IUpdateLabOrderStatusCommandHandler updateLabOrderStatusCommandHandler) : ControllerBase
 {
@@ -20,7 +20,7 @@ public sealed class LabDiagnosticsController(
         [FromQuery] string? category,
         CancellationToken cancellationToken)
     {
-        var orders = await operationsData.GetDiagnosticOrdersAsync(tenantCode, category, cancellationToken);
+        var orders = await getLabOrdersQueryHandler.Handle(new GetLabOrdersQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(orders));
     }
 
@@ -45,3 +45,7 @@ public sealed class LabDiagnosticsController(
 }
 
 public sealed record UpdateLabOrderStatusRequest(string Status, string? Finding);
+
+
+
+

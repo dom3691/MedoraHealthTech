@@ -1,7 +1,7 @@
-using Medora.Application.Common.Interfaces;
+﻿using Medora.Application.Common.Interfaces;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.Patients.Commands.CreatePatient;
-using Medora.Domain.HospitalOperations;
+using Medora.Domain.Entities;
 using Medora.Infrastructure.Features.Common;
 using Medora.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -39,3 +39,4 @@ public sealed class CreatePatientCommandHandler(
         return Result(patient, patient.Mrn, patient.Status ?? "Created");
     }
 }
+

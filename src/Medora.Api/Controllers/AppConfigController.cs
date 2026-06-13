@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
 
@@ -33,3 +33,5 @@ public sealed record AppConfigResponse(
     string LoginHeroSubtitle,
     string LoginComplianceText,
     string GlobalSearchPlaceholder);
+
+

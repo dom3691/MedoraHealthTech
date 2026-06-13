@@ -1,4 +1,5 @@
-using Medora.Application.Modules.Operations.Data;
+﻿using Medora.Application.Features.ProcurementVendors.Queries.GetPurchaseOrders;
+using Medora.Application.Features.ProcurementVendors.Queries.GetVendors;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.ProcurementVendors.Commands.CreatePurchaseOrder;
 using Microsoft.AspNetCore.Mvc;
@@ -8,14 +9,15 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/procurement-vendors")]
 public sealed class ProcurementVendorsController(
-    IOperationsDataQueryService operationsData,
+    IGetPurchaseOrdersQueryHandler getPurchaseOrdersQueryHandler,
+    IGetVendorsQueryHandler getVendorsQueryHandler,
     ICreatePurchaseOrderCommandHandler createPurchaseOrderCommandHandler) : ControllerBase
 {
     [HttpGet("vendors")]
     [HttpGet("/api/operations/vendors")]
     public async Task<ActionResult<ApiResponse<object>>> GetVendors([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var vendors = await operationsData.GetVendorsAsync(tenantCode, cancellationToken);
+        var vendors = await getVendorsQueryHandler.Handle(new GetVendorsQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(vendors));
     }
 
@@ -23,7 +25,7 @@ public sealed class ProcurementVendorsController(
     [HttpGet("/api/operations/purchase-orders")]
     public async Task<ActionResult<ApiResponse<object>>> GetPurchaseOrders([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var purchaseOrders = await operationsData.GetPurchaseOrdersAsync(tenantCode, cancellationToken);
+        var purchaseOrders = await getPurchaseOrdersQueryHandler.Handle(new GetPurchaseOrdersQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(purchaseOrders));
     }
 
@@ -36,3 +38,7 @@ public sealed class ProcurementVendorsController(
         return Created($"/api/procurement-vendors/purchase-orders/{result.Id}", ApiResponse<CommandResult>.Ok(result, "Purchase order created successfully."));
     }
 }
+
+
+
+

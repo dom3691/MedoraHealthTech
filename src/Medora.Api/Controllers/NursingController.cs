@@ -1,4 +1,4 @@
-using Medora.Application.Modules.Operations.Data;
+﻿using Medora.Application.Features.Nursing.Queries.GetNursingTasks;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.Nursing.Commands.CreateNursingTask;
 using Medora.Application.Features.Nursing.Commands.UpdateNursingTaskStatus;
@@ -9,7 +9,7 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/nursing")]
 public sealed class NursingController(
-    IOperationsDataQueryService operationsData,
+    IGetNursingTasksQueryHandler getNursingTasksQueryHandler,
     ICreateNursingTaskCommandHandler createNursingTaskCommandHandler,
     IUpdateNursingTaskStatusCommandHandler updateNursingTaskStatusCommandHandler) : ControllerBase
 {
@@ -17,7 +17,7 @@ public sealed class NursingController(
     [HttpGet("/api/operations/nursing-tasks")]
     public async Task<ActionResult<ApiResponse<object>>> GetNursingTasks([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var tasks = await operationsData.GetNursingTasksAsync(tenantCode, cancellationToken);
+        var tasks = await getNursingTasksQueryHandler.Handle(new GetNursingTasksQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(tasks));
     }
 
@@ -42,3 +42,6 @@ public sealed class NursingController(
 }
 
 public sealed record UpdateNursingTaskStatusRequest(string Status);
+
+
+

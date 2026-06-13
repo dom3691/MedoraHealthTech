@@ -1,7 +1,7 @@
-using Medora.Application.Common.Models;
+﻿using Medora.Application.Common.Models;
 using Medora.Application.Features.TheatreAndSurgery.Commands.ScheduleSurgery;
 using Medora.Application.Features.TheatreAndSurgery.Commands.UpdateSurgeryStatus;
-using Medora.Application.Modules.Operations.Data;
+using Medora.Application.Features.TheatreAndSurgery.Queries.GetSurgeryCases;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
@@ -9,7 +9,7 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/theatre-and-surgery")]
 public sealed class TheatreAndSurgeryController(
-    IOperationsDataQueryService operationsData,
+    IGetSurgeryCasesQueryHandler getSurgeryCasesQueryHandler,
     IScheduleSurgeryCommandHandler scheduleSurgeryCommandHandler,
     IUpdateSurgeryStatusCommandHandler updateSurgeryStatusCommandHandler) : ControllerBase
 {
@@ -17,7 +17,7 @@ public sealed class TheatreAndSurgeryController(
     [HttpGet("/api/operations/surgery-cases")]
     public async Task<ActionResult<ApiResponse<object>>> GetSurgeryCases([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var cases = await operationsData.GetSurgeryCasesAsync(tenantCode, cancellationToken);
+        var cases = await getSurgeryCasesQueryHandler.Handle(new GetSurgeryCasesQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(cases));
     }
 
@@ -42,3 +42,6 @@ public sealed class TheatreAndSurgeryController(
 }
 
 public sealed record UpdateSurgeryStatusRequest(string Status);
+
+
+

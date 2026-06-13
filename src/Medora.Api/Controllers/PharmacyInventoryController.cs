@@ -1,4 +1,4 @@
-using Medora.Application.Modules.Operations.Data;
+﻿using Medora.Application.Features.PharmacyInventory.Queries.GetInventoryItems;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.PharmacyInventory.Commands.AddInventoryItem;
 using Medora.Application.Features.PharmacyInventory.Commands.ReorderStock;
@@ -9,7 +9,7 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/pharmacy-inventory")]
 public sealed class PharmacyInventoryController(
-    IOperationsDataQueryService operationsData,
+    IGetInventoryItemsQueryHandler getInventoryItemsQueryHandler,
     IAddInventoryItemCommandHandler addInventoryItemCommandHandler,
     IReorderStockCommandHandler reorderStockCommandHandler) : ControllerBase
 {
@@ -17,7 +17,7 @@ public sealed class PharmacyInventoryController(
     [HttpGet("/api/operations/inventory-items")]
     public async Task<ActionResult<ApiResponse<object>>> GetInventoryItems([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var items = await operationsData.GetInventoryItemsAsync(tenantCode, cancellationToken);
+        var items = await getInventoryItemsQueryHandler.Handle(new GetInventoryItemsQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(items));
     }
 
@@ -39,3 +39,7 @@ public sealed class PharmacyInventoryController(
         return Created($"/api/procurement-vendors/purchase-orders/{result.Id}", ApiResponse<CommandResult>.Ok(result, "Reorder purchase order created successfully."));
     }
 }
+
+
+
+

@@ -1,4 +1,4 @@
-using Medora.Application.Modules.Identity.Auth;
+﻿using Medora.Application.Modules.Identity.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
@@ -14,3 +14,5 @@ public sealed class AuthController(IAuthService authService) : ControllerBase
         return session is null ? Unauthorized() : Ok(session);
     }
 }
+
+

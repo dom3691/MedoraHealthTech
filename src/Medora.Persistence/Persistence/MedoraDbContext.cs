@@ -1,8 +1,5 @@
-using Medora.Domain.Audit;
+﻿using Medora.Domain.Entities;
 using Medora.Domain.Common;
-using Medora.Domain.HospitalOperations;
-using Medora.Domain.HrOperations;
-using Medora.Domain.Identity;
 using Medora.Application.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -218,3 +215,4 @@ public sealed class MedoraDbContext : DbContext
         modelBuilder.Entity<RecruitmentCandidate>().HasIndex(x => new { x.TenantId, x.CandidateNumber }).IsUnique();
     }
 }
+

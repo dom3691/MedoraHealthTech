@@ -1,7 +1,7 @@
-using Medora.Application.Common.Interfaces;
+﻿using Medora.Application.Common.Interfaces;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.Staff.Commands.AddStaffMember;
-using Medora.Domain.HrOperations;
+using Medora.Domain.Entities;
 using Medora.Infrastructure.Features.Common;
 using Medora.Infrastructure.Persistence;
 
@@ -34,3 +34,4 @@ public sealed class AddStaffMemberCommandHandler(
         return Result(staff, staff.EmployeeNumber, staff.Status);
     }
 }
+

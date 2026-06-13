@@ -50,6 +50,14 @@ public abstract class TenantCommandHandlerBase(
         }
     }
 
+    protected static void RequireText(string? value, string fieldName)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new ValidationException($"{fieldName} is required.");
+        }
+    }
+
     protected static CommandResult Result(TenantScopedEntity entity, string reference, string status) =>
         new(entity.Id, reference, status);
 }

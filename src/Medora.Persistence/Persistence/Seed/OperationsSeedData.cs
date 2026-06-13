@@ -1,6 +1,4 @@
-using Medora.Domain.Audit;
-using Medora.Domain.HospitalOperations;
-using Medora.Domain.HrOperations;
+﻿using Medora.Domain.Entities;
 
 namespace Medora.Infrastructure.Persistence.Seed;
 
@@ -350,3 +348,4 @@ public static class OperationsSeedData
     private static CredentialRecord Credential(Guid tenantId, DateTimeOffset now, string staff, string credential, string status) => new() { TenantId = tenantId, CreatedAt = now, StaffName = staff, CredentialName = credential, ExpiresOn = new DateOnly(2026, 12, 31), Status = status };
     private static PerformanceReview Review(Guid tenantId, DateTimeOffset now, string staff, string period, decimal score, string status, string reviewer) => new() { TenantId = tenantId, CreatedAt = now, StaffName = staff, ReviewPeriod = period, Score = score, Status = status, ReviewerName = reviewer };
 }
+

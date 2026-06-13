@@ -1,7 +1,7 @@
-using Medora.Application.Common.Interfaces;
+﻿using Medora.Application.Common.Interfaces;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.Notifications.Commands.CreateNotification;
-using Medora.Domain.HospitalOperations;
+using Medora.Domain.Entities;
 using Medora.Infrastructure.Features.Common;
 using Medora.Infrastructure.Persistence;
 
@@ -32,3 +32,4 @@ public sealed class CreateNotificationCommandHandler(
         return Result(notification, notification.Title, notification.Status);
     }
 }
+

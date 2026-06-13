@@ -1,9 +1,8 @@
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using Medora.Application.Common.Exceptions;
 using Medora.Application.Modules.TenantAdministration.Users;
 using Medora.Application.Security;
-using Medora.Domain.HrOperations;
-using Medora.Domain.Identity;
+using Medora.Domain.Entities;
 using Medora.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -134,3 +133,4 @@ public sealed class TenantUserOnboardingService(MedoraDbContext dbContext) : ITe
         return $"Medora-{Convert.ToBase64String(bytes).Replace("+", "", StringComparison.Ordinal).Replace("/", "", StringComparison.Ordinal).TrimEnd('=')}!";
     }
 }
+

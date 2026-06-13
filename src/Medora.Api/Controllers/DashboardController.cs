@@ -1,4 +1,4 @@
-using Medora.Application.Common.Models;
+﻿using Medora.Application.Common.Models;
 using Medora.Application.Screens;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,3 +19,5 @@ public sealed class DashboardController(IScreenCatalog screenCatalog) : Controll
             : Ok(ApiResponse<ScreenDefinition>.Ok(dashboard));
     }
 }
+
+

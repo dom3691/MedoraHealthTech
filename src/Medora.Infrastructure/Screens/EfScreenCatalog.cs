@@ -1,7 +1,6 @@
-using Medora.Application.Abstractions;
+﻿using Medora.Application.Abstractions;
 using Medora.Application.Screens;
-using Medora.Domain.HospitalOperations;
-using Medora.Domain.Identity;
+using Medora.Domain.Entities;
 using Medora.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -571,7 +570,7 @@ public sealed class EfScreenCatalog(MedoraDbContext dbContext, IDateTimeProvider
     private static int Percent(int value, int total) => total == 0 ? 0 : (int)Math.Round((decimal)value / total * 100);
     private static string Initials(string value) => string.Concat(value.Split(' ', StringSplitOptions.RemoveEmptyEntries).Take(2).Select(x => x[0])).ToUpperInvariant();
 
-    private static string LeadStaffForWard(Ward ward, IReadOnlyList<Medora.Domain.HrOperations.StaffMember> nurses, IReadOnlyList<Medora.Domain.HrOperations.StaffMember> activeStaff)
+    private static string LeadStaffForWard(Ward ward, IReadOnlyList<Medora.Domain.Entities.StaffMember> nurses, IReadOnlyList<Medora.Domain.Entities.StaffMember> activeStaff)
     {
         return nurses.FirstOrDefault(x => x.Department == ward.Department)?.FullName
             ?? nurses.FirstOrDefault()?.FullName
@@ -590,3 +589,4 @@ public sealed class EfScreenCatalog(MedoraDbContext dbContext, IDateTimeProvider
         return totals is null ? 0 : Percent(totals.Occupied, totals.Total);
     }
 }
+

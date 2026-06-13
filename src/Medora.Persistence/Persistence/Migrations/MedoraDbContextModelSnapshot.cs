@@ -22,7 +22,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Medora.Domain.Audit.AuditLog", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.AuditLog", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("AuditLogs", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Admission", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Admission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -168,7 +168,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Admissions", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Appointment", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Appointment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -246,7 +246,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Appointments", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Bed", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Bed", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -301,7 +301,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Beds", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.ComplianceControl", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ComplianceControl", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -352,7 +352,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("ComplianceControls", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Department", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Department", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -421,7 +421,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Departments", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.DiagnosticOrder", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.DiagnosticOrder", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -502,7 +502,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("DiagnosticOrders", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.EmergencyCase", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.EmergencyCase", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -569,7 +569,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("EmergencyCases", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.InsuranceClaim", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.InsuranceClaim", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -632,7 +632,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("InsuranceClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.InventoryItem", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.InventoryItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -702,7 +702,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("InventoryItems", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Invoice", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Invoice", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -768,7 +768,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Invoices", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.NotificationMessage", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.NotificationMessage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -829,7 +829,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Notifications", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.NursingTask", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.NursingTask", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -898,7 +898,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("NursingTasks", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.OperationalModule", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.OperationalModule", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -975,7 +975,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("OperationalModules", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Patient", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Patient", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1032,7 +1032,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Patients", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.PatientEncounter", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PatientEncounter", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1119,7 +1119,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("PatientEncounters", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.PreAuthorization", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PreAuthorization", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1172,7 +1172,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("PreAuthorizations", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.PurchaseOrder", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PurchaseOrder", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1238,7 +1238,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("PurchaseOrders", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.ReportMetric", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ReportMetric", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1296,7 +1296,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("ReportMetrics", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.SurgeryCase", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.SurgeryCase", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1365,7 +1365,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("SurgeryCases", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.TelemedicineSession", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.TelemedicineSession", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1432,7 +1432,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("TelemedicineSessions", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Vendor", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Vendor", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1494,7 +1494,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Vendors", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Ward", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Ward", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1555,7 +1555,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Wards", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.AttendanceRecord", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.AttendanceRecord", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1612,7 +1612,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("AttendanceRecords", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.CredentialRecord", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.CredentialRecord", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1663,7 +1663,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("CredentialRecords", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.LeaveRequest", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.LeaveRequest", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1729,7 +1729,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("LeaveRequests", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.PerformanceReview", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PerformanceReview", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1785,7 +1785,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("PerformanceReviews", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.RecruitmentCandidate", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.RecruitmentCandidate", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1851,7 +1851,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("RecruitmentCandidates", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.ShiftAssignment", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ShiftAssignment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1913,7 +1913,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("ShiftAssignments", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.StaffMember", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.StaffMember", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1986,7 +1986,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("StaffMembers", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.TrainingRecord", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.TrainingRecord", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -2040,7 +2040,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("TrainingRecords", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.ApplicationUser", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -2091,7 +2091,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.Permission", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -2125,7 +2125,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Permissions", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.Role", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -2157,7 +2157,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Roles", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.RolePermission", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.RolePermission", b =>
                 {
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
@@ -2172,7 +2172,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("RolePermissions", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.Tenant", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -2214,7 +2214,7 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("Tenants", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.UserRole", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.UserRole", b =>
                 {
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -2229,303 +2229,303 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.ToTable("UserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Medora.Domain.Audit.AuditLog", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.AuditLog", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Admission", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Admission", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Appointment", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Appointment", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Bed", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Bed", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.ComplianceControl", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ComplianceControl", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Department", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Department", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.DiagnosticOrder", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.DiagnosticOrder", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.EmergencyCase", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.EmergencyCase", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.InsuranceClaim", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.InsuranceClaim", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.InventoryItem", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.InventoryItem", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Invoice", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Invoice", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.NotificationMessage", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.NotificationMessage", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.NursingTask", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.NursingTask", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.OperationalModule", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.OperationalModule", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Patient", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Patient", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.PatientEncounter", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PatientEncounter", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.PreAuthorization", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PreAuthorization", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.PurchaseOrder", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PurchaseOrder", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.ReportMetric", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ReportMetric", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.SurgeryCase", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.SurgeryCase", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.TelemedicineSession", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.TelemedicineSession", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Vendor", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Vendor", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HospitalOperations.Ward", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Ward", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.AttendanceRecord", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.AttendanceRecord", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.CredentialRecord", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.CredentialRecord", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.LeaveRequest", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.LeaveRequest", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.PerformanceReview", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.PerformanceReview", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.RecruitmentCandidate", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.RecruitmentCandidate", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.ShiftAssignment", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ShiftAssignment", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.StaffMember", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.StaffMember", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.HrOperations.TrainingRecord", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.TrainingRecord", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.ApplicationUser", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ApplicationUser", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Tenant", null)
+                    b.HasOne("Medora.Domain.Entities.Tenant", null)
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.RolePermission", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.RolePermission", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Permission", "Permission")
+                    b.HasOne("Medora.Domain.Entities.Permission", "Permission")
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Medora.Domain.Identity.Role", "Role")
+                    b.HasOne("Medora.Domain.Entities.Role", "Role")
                         .WithMany("RolePermissions")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2536,15 +2536,15 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.UserRole", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.UserRole", b =>
                 {
-                    b.HasOne("Medora.Domain.Identity.Role", "Role")
+                    b.HasOne("Medora.Domain.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Medora.Domain.Identity.ApplicationUser", "User")
+                    b.HasOne("Medora.Domain.Entities.ApplicationUser", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2555,12 +2555,12 @@ namespace Medora.Infrastructure.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.ApplicationUser", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("Medora.Domain.Identity.Role", b =>
+            modelBuilder.Entity("Medora.Domain.Entities.Role", b =>
                 {
                     b.Navigation("RolePermissions");
                 });
@@ -2568,3 +2568,4 @@ namespace Medora.Infrastructure.Persistence.Migrations
         }
     }
 }
+

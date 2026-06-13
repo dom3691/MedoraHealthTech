@@ -1,5 +1,5 @@
-using Medora.Application.Common.Models;
-using Medora.Application.Modules.Operations.Data;
+﻿using Medora.Application.Common.Models;
+using Medora.Application.Features.Tenants.Queries.GetTenants;
 using Medora.Application.Modules.Platform.Tenants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,14 +9,14 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/tenants")]
 public sealed class TenantsController(
-    IOperationsDataQueryService operationsData,
+    IGetTenantsQueryHandler getTenantsQueryHandler,
     IPlatformTenantOnboardingService tenantOnboarding) : ControllerBase
 {
     [HttpGet]
     [HttpGet("/api/operations/tenants")]
     public async Task<ActionResult<ApiResponse<object>>> GetTenants(CancellationToken cancellationToken)
     {
-        var tenants = await operationsData.GetTenantsAsync(cancellationToken);
+        var tenants = await getTenantsQueryHandler.Handle(new GetTenantsQuery(), cancellationToken);
         return Ok(ApiResponse<object>.Ok(tenants));
     }
 
@@ -47,3 +47,6 @@ public sealed class TenantsController(
         }
     }
 }
+
+
+

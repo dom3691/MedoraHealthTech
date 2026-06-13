@@ -1,7 +1,8 @@
-using Medora.Application.Common.Models;
+﻿using Medora.Application.Common.Models;
 using Medora.Application.Features.WardsAndBeds.Commands.AllocateBed;
 using Medora.Application.Features.WardsAndBeds.Commands.UpdateBedStatus;
-using Medora.Application.Modules.Operations.Data;
+using Medora.Application.Features.WardsAndBeds.Queries.GetBeds;
+using Medora.Application.Features.WardsAndBeds.Queries.GetWards;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Medora.Api.Controllers;
@@ -9,7 +10,8 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/wards-and-beds")]
 public sealed class WardsAndBedsController(
-    IOperationsDataQueryService operationsData,
+    IGetWardsQueryHandler getWardsQueryHandler,
+    IGetBedsQueryHandler getBedsQueryHandler,
     IAllocateBedCommandHandler allocateBedCommandHandler,
     IUpdateBedStatusCommandHandler updateBedStatusCommandHandler) : ControllerBase
 {
@@ -17,7 +19,7 @@ public sealed class WardsAndBedsController(
     [HttpGet("/api/operations/wards")]
     public async Task<ActionResult<ApiResponse<object>>> GetWards([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var wards = await operationsData.GetWardsAsync(tenantCode, cancellationToken);
+        var wards = await getWardsQueryHandler.Handle(new GetWardsQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(wards));
     }
 
@@ -25,7 +27,7 @@ public sealed class WardsAndBedsController(
     [HttpGet("/api/operations/beds")]
     public async Task<ActionResult<ApiResponse<object>>> GetBeds([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var beds = await operationsData.GetBedsAsync(tenantCode, cancellationToken);
+        var beds = await getBedsQueryHandler.Handle(new GetBedsQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(beds));
     }
 
@@ -50,3 +52,6 @@ public sealed class WardsAndBedsController(
 }
 
 public sealed record UpdateBedStatusRequest(string Status);
+
+
+

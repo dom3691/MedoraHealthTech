@@ -1,4 +1,4 @@
-using Medora.Application.Modules.Operations.Data;
+﻿using Medora.Application.Features.Staff.Queries.GetStaff;
 using Medora.Application.Common.Models;
 using Medora.Application.Features.Staff.Commands.AddStaffMember;
 using Microsoft.AspNetCore.Mvc;
@@ -8,14 +8,14 @@ namespace Medora.Api.Controllers;
 [ApiController]
 [Route("api/staff")]
 public sealed class StaffController(
-    IOperationsDataQueryService operationsData,
+    IGetStaffQueryHandler getStaffQueryHandler,
     IAddStaffMemberCommandHandler addStaffMemberCommandHandler) : ControllerBase
 {
     [HttpGet]
     [HttpGet("/api/operations/staff")]
     public async Task<ActionResult<ApiResponse<object>>> GetStaff([FromQuery] string? tenantCode, CancellationToken cancellationToken)
     {
-        var staff = await operationsData.GetStaffAsync(tenantCode, cancellationToken);
+        var staff = await getStaffQueryHandler.Handle(new GetStaffQuery(tenantCode), cancellationToken);
         return Ok(ApiResponse<object>.Ok(staff));
     }
 
@@ -28,3 +28,6 @@ public sealed class StaffController(
         return Created($"/api/staff/{result.Id}", ApiResponse<CommandResult>.Ok(result, "Staff member added successfully."));
     }
 }
+
+
+
